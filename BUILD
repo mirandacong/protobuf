@@ -480,7 +480,7 @@ cc_binary(
     deps = [
         ":protobuf",
         ":protoc_lib",
-        "//external:gtest",
+        "@logi//third_party/cc/gtest:gtest",
     ],
 )
 
@@ -489,7 +489,7 @@ cc_test(
     srcs = ["src/google/protobuf/stubs/io_win32_unittest.cc"],
     deps = [
         ":protobuf_lite",
-        "//external:gtest_main",
+        "@logi//third_party/cc/gtest:gtest_main",
     ],
     tags = ["manual", "windows"],
 )
@@ -589,7 +589,7 @@ cc_test(
         ":cc_test_protos",
         ":protobuf",
         ":protoc_lib",
-        "//external:gtest_main",
+        "@logi//third_party/cc/gtest:gtest_main",
     ],
 )
 
@@ -622,9 +622,9 @@ java_library(
     javacopts = ["-source 7", "-target 7"],
     visibility = ["//visibility:public"],
     deps = [
+        "@gson//jar",
+        "@guava//jar",
         "protobuf_java",
-        "//external:gson",
-        "//external:guava",
     ],
 )
 
@@ -661,7 +661,7 @@ cc_binary(
     linkstatic = 1,
     deps = select({
         "//conditions:default": [],
-        ":use_fast_cpp_protos": ["//external:python_headers"],
+        ":use_fast_cpp_protos": ["@default_python//:headers"],
     }),
 )
 
@@ -688,7 +688,7 @@ cc_binary(
         ":proto_api",
     ] + select({
         "//conditions:default": [],
-        ":use_fast_cpp_protos": ["//external:python_headers"],
+        ":use_fast_cpp_protos": ["@default_python//:headers"],
     }),
 )
 
@@ -831,9 +831,7 @@ internal_protobuf_py_tests(
 cc_library(
     name = "proto_api",
     hdrs = ["python/google/protobuf/proto_api.h"],
-    deps = [
-        "//external:python_headers",
-    ],
+    deps = ["@default_python//:headers"],
     visibility = ["//visibility:public"],
 )
 
