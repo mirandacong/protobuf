@@ -62,40 +62,42 @@ java_binary(
     deps = [":addressbook_java_proto"],
 )
 
-# Java lite.
-#
-# Remote repository "com_google_protobuf_javalite" must be defined to use this
-# rule.
-java_lite_proto_library(
-    name = "addressbook_java_lite_proto",
-    deps = [":addressbook_proto"],
-)
+# TODO (zhongming): Javalite support has been commented out because the build
+# system fails with it.  See @logi//examples/protobuf/BUILD for details.
+## Java lite.
+##
+## Remote repository "com_google_protobuf_javalite" must be defined to use this
+## rule.
+#java_lite_proto_library(
+    #name = "addressbook_java_lite_proto",
+    #deps = [":addressbook_proto"],
+#)
 
-# Java lite API is a subset of the regular Java API so if you only uses this
-# subset in your code, you can actually compile your code against both (i.e.,
-# share code between server build and Android build).
-#
-# The lite version has a smaller code size, and you can see that by comparing
-# the resulted .jar file:
-#
-#   $ bazel build :add_person_java_deploy.jar :add_person_java_lite_deploy.jar
-#   $ ls -l bazel-bin/*_deploy.jar
-#   -r-xr-xr-x 1 xiaofeng eng 1230797 Sep  8 12:24 bazel-bin/add_person_java_deploy.jar
-#   -r-xr-xr-x 1 xiaofeng eng  236166 Sep  8 12:24 bazel-bin/add_person_java_lite_deploy.jar
-#
-# In the above example, the lite .jar file is 6 times smaller. With proper
-# proguard inlining/stripping, the difference can be much more larger than
-# that.
-java_binary(
-    name = "add_person_java_lite",
-    srcs = ["AddPerson.java"],
-    main_class = "AddPerson",
-    deps = [":addressbook_java_lite_proto"],
-)
+## Java lite API is a subset of the regular Java API so if you only uses this
+## subset in your code, you can actually compile your code against both (i.e.,
+## share code between server build and Android build).
+##
+## The lite version has a smaller code size, and you can see that by comparing
+## the resulted .jar file:
+##
+##   $ bazel build :add_person_java_deploy.jar :add_person_java_lite_deploy.jar
+##   $ ls -l bazel-bin/*_deploy.jar
+##   -r-xr-xr-x 1 xiaofeng eng 1230797 Sep  8 12:24 bazel-bin/add_person_java_deploy.jar
+##   -r-xr-xr-x 1 xiaofeng eng  236166 Sep  8 12:24 bazel-bin/add_person_java_lite_deploy.jar
+##
+## In the above example, the lite .jar file is 6 times smaller. With proper
+## proguard inlining/stripping, the difference can be much more larger than
+## that.
+#java_binary(
+    #name = "add_person_java_lite",
+    #srcs = ["AddPerson.java"],
+    #main_class = "AddPerson",
+    #deps = [":addressbook_java_lite_proto"],
+#)
 
-java_binary(
-    name = "list_people_java_lite",
-    srcs = ["ListPeople.java"],
-    main_class = "ListPeople",
-    deps = [":addressbook_java_lite_proto"],
-)
+#java_binary(
+    #name = "list_people_java_lite",
+    #srcs = ["ListPeople.java"],
+    #main_class = "ListPeople",
+    #deps = [":addressbook_java_lite_proto"],
+#)

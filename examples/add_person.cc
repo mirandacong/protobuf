@@ -6,7 +6,7 @@
 #include <iostream>
 #include <string>
 
-#include "addressbook.pb.h"
+#include "examples/addressbook.pb.h"
 
 using namespace std;
 
