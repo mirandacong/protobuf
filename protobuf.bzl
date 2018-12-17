@@ -138,11 +138,7 @@ def _proto_gen_impl(ctx):
           arguments=args + import_flags + [src.path],
           executable=ctx.executable.protoc,
           mnemonic="ProtoCompile",
-          use_default_shell_env=False,
-          # zhongming: This is a workaround to allow LogiOcean's clang-based
-          # toolchain, installed in /opt/clang to build py_proto_library()
-          # targets.
-          env={'LD_LIBRARY_PATH': '/opt/clang/lib'},
+          use_default_shell_env=True,
       )
     else:
       for out in outs:
@@ -163,11 +159,7 @@ def _proto_gen_impl(ctx):
             outputs=[out],
             command=command,
             mnemonic="ProtoCompile",
-            use_default_shell_env=False,
-            # zhongming: This is a workaround to allow LogiOcean's clang-based
-            # toolchain, installed in /opt/clang to build py_proto_library()
-            # targets.
-            env={'LD_LIBRARY_PATH': '/opt/clang/lib'},
+            use_default_shell_env=True,
         )
 
   return struct(
