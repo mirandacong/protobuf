@@ -662,7 +662,7 @@ cc_binary(
     linkstatic = 1,
     deps = select({
         "//conditions:default": [],
-        ":use_fast_cpp_protos": ["@default_python//:headers"],
+        ":use_fast_cpp_protos": ["@local_config_python//:headers"],
     }),
 )
 
@@ -689,7 +689,7 @@ cc_binary(
         ":proto_api",
     ] + select({
         "//conditions:default": [],
-        ":use_fast_cpp_protos": ["@default_python//:headers"],
+        ":use_fast_cpp_protos": ["@local_config_python//:headers"],
     }),
 )
 
@@ -832,7 +832,7 @@ internal_protobuf_py_tests(
 cc_library(
     name = "proto_api",
     hdrs = ["python/google/protobuf/proto_api.h"],
-    deps = ["@default_python//:headers"],
+    deps = ["@local_config_python//:headers"],
     visibility = ["//visibility:public"],
 )
 
