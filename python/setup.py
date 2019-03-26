@@ -188,6 +188,7 @@ if __name__ == '__main__':
 
     if sys.platform == 'darwin':
       extra_compile_args.append("-Wno-shorten-64-to-32");
+      extra_compile_args.append("-Wno-deprecated-register");
 
     # https://developer.apple.com/documentation/xcode_release_notes/xcode_10_release_notes
     # C++ projects must now migrate to libc++ and are recommended to set a
@@ -274,6 +275,9 @@ if __name__ == '__main__':
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
         ],
       namespace_packages=['google'],
       packages=find_packages(

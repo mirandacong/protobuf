@@ -90,8 +90,8 @@ $(benchmarks_protoc_outputs_proto2_header): protoc_middleman2
 
 initialize_submodule:
 	oldpwd=`pwd`
-	cd $(top_srcdir) && git submodule update --init -r third_party/benchmark
-	cd $(top_srcdir)/third_party/benchmark && cmake -DCMAKE_BUILD_TYPE=Release && make
+	cd $(top_srcdir) && git submodule update --init -r third_party/benchmark && \
+		cd third_party/benchmark && cmake -DCMAKE_BUILD_TYPE=Release && make
 	cd $$oldpwd
 	touch initialize_submodule
 
@@ -521,10 +521,10 @@ php-benchmark: proto3_middleman_php generate_proto3_data
 	@chmod +x php-benchmark
 
 php: php-benchmark proto3_middleman_php
-	./php-benchmark $(proto3_data)
+	./php-benchmark --behavior_prefix="php" $(proto3_data)
 
 php_c_extension:
-	cd $(top_srcdir)/php/ext/google/protobuf && ./configure CFLAGS='-O3' && make -j8
+	cd $(top_srcdir)/php/ext/google/protobuf && phpize && ./configure CFLAGS='-O3' && make -j8
 
 php-c-benchmark: proto3_middleman_php generate_proto3_data php_c_extension php_c_extension
 	mkdir -p "tmp/php/Google/Protobuf/Benchmark" && cp php/PhpBenchmark.php "tmp/php/Google/Protobuf/Benchmark" 
@@ -540,7 +540,7 @@ php-c-benchmark: proto3_middleman_php generate_proto3_data php_c_extension php_c
 	@chmod +x php-c-benchmark
 
 php_c: php-c-benchmark proto3_middleman_php
-	./php-c-benchmark $(proto3_data)
+	./php-c-benchmark --behavior_prefix="php_c" $(proto3_data)
 
 
 ############ PHP RULES END #################

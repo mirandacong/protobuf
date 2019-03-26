@@ -473,6 +473,12 @@ objectivec_EXTRA_DIST=                                                       \
   objectivec/ProtocolBuffers_OSX.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings \
   objectivec/ProtocolBuffers_OSX.xcodeproj/xcshareddata/xcschemes/PerformanceTests.xcscheme \
   objectivec/ProtocolBuffers_OSX.xcodeproj/xcshareddata/xcschemes/ProtocolBuffers.xcscheme \
+  objectivec/ProtocolBuffers_tvOS.xcodeproj/project.pbxproj                  \
+  objectivec/ProtocolBuffers_tvOS.xcodeproj/project.xcworkspace/contents.xcworkspacedata \
+  objectivec/ProtocolBuffers_tvOS.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist \
+  objectivec/ProtocolBuffers_tvOS.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings \
+  objectivec/ProtocolBuffers_tvOS.xcodeproj/xcshareddata/xcschemes/PerformanceTests.xcscheme \
+  objectivec/ProtocolBuffers_tvOS.xcodeproj/xcshareddata/xcschemes/ProtocolBuffers.xcscheme \
   objectivec/README.md                                                       \
   objectivec/Tests/CocoaPods/OSXCocoaPodsTester/OSXCocoaPodsTester.xcodeproj/project.pbxproj \
   objectivec/Tests/CocoaPods/OSXCocoaPodsTester/OSXCocoaPodsTester.xcodeproj/project.xcworkspace/contents.xcworkspacedata \
@@ -601,6 +607,7 @@ php_EXTRA_DIST=                                                       \
   php/ext/google/protobuf/utf8.h                                      \
   php/generate_descriptor_protos.sh                                   \
   php/phpunit.xml                                                     \
+  php/release.sh                                                      \
   php/src/GPBMetadata/Google/Protobuf/Any.php                         \
   php/src/GPBMetadata/Google/Protobuf/Api.php                         \
   php/src/GPBMetadata/Google/Protobuf/Duration.php                    \
@@ -1081,6 +1088,7 @@ EXTRA_DIST = $(@DIST_LANG@_EXTRA_DIST)   \
   cmake/protoc.cmake                     \
   cmake/tests.cmake                      \
   cmake/version.rc.in                    \
+  compiler_config_setting.bzl            \
   editors/README.txt                     \
   editors/proto.vim                      \
   editors/protobuf-mode.el               \
@@ -1103,6 +1111,7 @@ EXTRA_DIST = $(@DIST_LANG@_EXTRA_DIST)   \
   examples/list_people.py                \
   examples/list_people_test.go           \
   examples/pubspec.yaml                  \
+  examples/third_party/zlib.BUILD        \
   protobuf.bzl                           \
   python/release/wheel/build_wheel_manylinux.sh  \
   python/release/wheel/Dockerfile                \
